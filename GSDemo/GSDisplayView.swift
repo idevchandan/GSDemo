@@ -9,7 +9,7 @@ import UIKit
 import AlamofireImage
 
 class GSDisplayView: UIView {
-
+    
     @IBOutlet weak var pictureOfTheDayImageView: UIImageView!
     @IBOutlet weak var pictureOfTheDayTitle: UILabel!
     @IBOutlet weak var pictureOfTheDayDate: UILabel!
@@ -17,11 +17,13 @@ class GSDisplayView: UIView {
     
     var pictureOfTheDay: PictureOfDate? {
         didSet {
-            pictureOfTheDayImageView.af.setImage(withURL: URL(string: pictureOfTheDay?.imageUrl ?? "")!)
-            pictureOfTheDayTitle.text = pictureOfTheDay?.title
-            pictureOfTheDayDate.text = pictureOfTheDay?.date
-            pictureOfTheDayTextView.text = pictureOfTheDay?.details
+            if let imageURL = pictureOfTheDay?.imageUrl, let title = pictureOfTheDay?.title, let date = pictureOfTheDay?.date, let details = pictureOfTheDay?.details {
+                pictureOfTheDayImageView.af.setImage(withURL: URL(string: imageURL)!)
+                pictureOfTheDayTitle.text = title
+                pictureOfTheDayDate.text = date
+                pictureOfTheDayTextView.text = details
+            }
         }
     }
-
+    
 }
