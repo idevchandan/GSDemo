@@ -105,10 +105,10 @@ class GSPictureOfTheDay: UIViewController {
             guard let favouritePicture = self.pictureOfTheDay else { return }
             if let title = favouritePicture.title, let date = favouritePicture.date, let details = favouritePicture.details, let imageUrl = favouritePicture.imageUrl {
                 GSStorageService.shareInstance.saveFavouritePicture(title: title, date: date, details: details, imageUrl: imageUrl)
-                self.showAlert(title: "Success", message: "Your Favourite picture has been stores successfully!")
+                self.showAlert(title: "Success", message: "Your favourite picture has been stored successfully!")
             }
         } else {
-            self.showAlert(title: "Alert!", message: "The picture sellected already exists!")
+            self.showAlert(title: "Alert!", message: "The sellected picture already exists!")
         }
     }
     
